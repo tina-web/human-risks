@@ -12,7 +12,7 @@ ng serve
 
 ## Mock db server
 
-To start the mock dataase server, run:
+To start the mock datase server, run:
 
 ```bash
 pnpm run server 
