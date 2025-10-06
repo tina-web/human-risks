@@ -1,0 +1,11 @@
+<div class="info-wrapper">
+    @for (item of (data$ | async); track item.id; let i = $index) {
+    <app-info-card [dataItem]="item" [ngClass]="{ 'info-card': item.type === 'text',
+        'card-text': item.type === 'text' && !item.textContent?.percentage,
+        'card-text-percentage': item.type === 'text' && item.textContent?.percentage,
+        'card-radar': item.type === 'chart-radar',
+        'card-bar': item.type === 'chart-bar',
+    }">
+    </app-info-card>
+    }
+</div>

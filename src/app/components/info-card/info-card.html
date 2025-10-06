@@ -1,0 +1,37 @@
+<div class="info-card">
+    <div class="py-4 px-0 flex flex-col gap-4">
+        <div class="flex gap-4">
+            <div class="flex flex-col gap-1 flex-1">
+                <div class="text-base leading-tight font-semibold ">{{ dataItem.title }}</div>
+                <div class="text-small leading-tight">{{ dataItem.description }}</div>
+            </div>
+        </div>
+        @if (dataItem){
+        <div class="card-content-wrapper flex flex-1">
+            @if (dataItem.type === "text" && !dataItem.textContent?.percentage) {
+            <!-- type text only -->
+            <div class="flex flex-col size-full items-center border-1 border-gray-300 rounded-lg py-5">
+                <div class="font-semibold text-2xl">{{ dataItem.textContent?.text }}</div>
+            </div>
+            } @else if (dataItem.type === "text" && dataItem.textContent?.percentage){
+            <!-- type text and percentage -->
+            <div class="flex size-full flex-col items-center border-1 border-gray-300 rounded-lg py-5">
+                <div class="font-semibold text-xl">{{ dataItem.textContent?.text }}</div>
+                <div class="bg-gray-600 text-white text-xs px-2 py-1 rounded-2xl">{{ dataItem.textContent?.percentage }}
+                </div>
+            </div>
+            } @else if (dataItem.type === "chart-radar"){
+            <!-- type chart-radar -->
+            <div class="size-full border-1 border-gray-300 rounded-lg py-5">
+                <app-chart-radar [data]="dataItem"></app-chart-radar>
+            </div>
+            } @else if (dataItem.type === "chart-bar"){
+            <!-- type chart-bar -->
+            <div class="card-bar size-full border-1 border-gray-300 rounded-lg py-5">
+                <app-chart-bar [data]="dataItem"></app-chart-bar>
+            </div>
+            }
+        </div>
+        }
+    </div>
+</div>

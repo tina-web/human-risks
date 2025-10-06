@@ -1,0 +1,15 @@
+.info-wrapper {
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+}
+
+.card-radar {
+    grid-column: auto / span 3;
+    grid-row: auto / span 2;
+}
+
+.card-bar {
+    grid-column: auto / span 3;
+     grid-row: auto / span 1;
+}
