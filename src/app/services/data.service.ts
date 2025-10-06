@@ -28,7 +28,6 @@ export interface ChartDataset {
   data: number[];
 }
 
-// Represents the full chart structure
 export interface ChartData {
   labels: string[];
   datasets: ChartDataset[];
@@ -38,24 +37,21 @@ export interface ChartData {
   providedIn: 'root',
 })
 export class DataService {
-  private apiUrl = 'http://localhost:3000/data'; // json-server endpoint
+  private apiUrl = 'http://localhost:3000/data';
   private data$ = new BehaviorSubject<DataItem[]>([]);
 
   constructor(private http: HttpClient) { }
 
-  /** Load all data from the API */
   loadData(): Observable<DataItem[]> {
     return this.http.get<DataItem[]>(this.apiUrl).pipe(
       tap(response => this.data$.next(response))
     );
   }
 
-  /** Get observable for subscribing components */
   getData(): Observable<DataItem[]> {
     return this.data$.asObservable();
   }
 
-  /** Add new data item */
   addData(item: Omit<DataItem, 'id'>): Observable<DataItem> {
     return this.http.post<DataItem>(this.apiUrl, item).pipe(
       tap(() => this.loadData().subscribe())

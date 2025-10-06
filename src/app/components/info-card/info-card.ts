@@ -14,9 +14,4 @@ import { DataItem } from '../../services/data.service';
 export class InfoCard {
   @Input() public dataItem!: DataItem
 
-  ngOnInit(): void {
-    console.log('hi')
-    console.log(this.dataItem)
-  }
-
 }

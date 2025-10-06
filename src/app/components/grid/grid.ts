@@ -16,12 +16,6 @@ private dataService = inject(DataService)
 protected data$: Observable<DataItem[]> = this.dataService.getData()
 
   ngOnInit(): void {
-    // Load data once
     this.dataService.loadData().subscribe();
-
-    console.log()
-    this.data$.subscribe(items => {
-     console.log(items)
-    });
   }
 }
